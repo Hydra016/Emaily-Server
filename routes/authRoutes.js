@@ -25,10 +25,15 @@ module.exports = app => {
         }
     })
     app.get('/api/current_user', (req, res) => {
-    if (req.isAuthenticated()) {
+    try{
         res.send(req.user);
-    } else {
-        res.status(401).send("Not authenticated");
+    } catch (err) {
+        console.log(err)
     }
+    // if (req.isAuthenticated()) {
+        
+    // } else {
+    //     res.status(401).send("Not authenticated");
+    // }
 });
 }
